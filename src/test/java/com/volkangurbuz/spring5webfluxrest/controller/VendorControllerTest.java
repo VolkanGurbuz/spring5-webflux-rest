@@ -62,21 +62,40 @@ public class VendorControllerTest {
         .expectStatus()
         .isCreated();
   }
-  /*
-  @Test
-  public void testCreateCategory() {
-    BDDMockito.given(categoryRepository.saveAll(any(Publisher.class)))
-            .willReturn(Flux.just(Category.builder().description("descrp").build()));
 
-    Mono<Category> catToSaveMono = Mono.just(Category.builder().description("Some Cat").build());
+  @Test
+  public void updateVendor() {
+
+    BDDMockito.given(vendorRepository.save(any(Vendor.class)))
+        .willReturn(Mono.just(Vendor.builder().build()));
+
+    Mono<Vendor> vendorToMono = Mono.just(Vendor.builder().firstName("some vendor").build());
 
     webTestClient
-            .post()
-            .uri("/api/v1/categories")
-            .body(catToSaveMono, Category.class)
-            .exchange()
-            .expectStatus()
-            .isCreated();
-  }*/
+        .put()
+        .uri("/api/v1/vendors/vendor1")
+        .body(vendorToMono, Vendor.class)
+        .exchange()
+        .expectStatus()
+        .isOk();
+  }
+
+  /*
+    @Test
+  public void TestUpdate() {
+    BDDMockito.given(categoryRepository.save(any(Category.class)))
+        .willReturn(Mono.just(Category.builder().build()));
+
+    Mono<Category> catToUpdateMono = Mono.just(Category.builder().description("Some Cat").build());
+
+    webTestClient
+        .put()
+        .uri("/api/v1/categories/asdfasdf")
+        .body(catToUpdateMono, Category.class)
+        .exchange()
+        .expectStatus()
+        .isOk();
+  }
+   */
 
 }
