@@ -51,7 +51,7 @@ public class CategoryControllerTest {
   }
 
   @Test
-  public void testCreateCateogry() {
+  public void testCreateCategory() {
     BDDMockito.given(categoryRepository.saveAll(any(Publisher.class)))
         .willReturn(Flux.just(Category.builder().description("descrp").build()));
 
