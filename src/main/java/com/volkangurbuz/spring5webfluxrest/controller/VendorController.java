@@ -24,7 +24,7 @@ public class VendorController {
   }
 
   // mono is zero one one element
-  @GetMapping("/api/v1/categories/{id}")
+  @GetMapping("/api/v1/vendors/{id}")
   Mono<Vendor> getById(@PathVariable String id) {
     return vendorRepository.findById(id);
   }
