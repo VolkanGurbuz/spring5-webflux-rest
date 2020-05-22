@@ -1,6 +1,5 @@
 package com.volkangurbuz.spring5webfluxrest.controller;
 
-import com.volkangurbuz.spring5webfluxrest.domain.Category;
 import com.volkangurbuz.spring5webfluxrest.domain.Vendor;
 import com.volkangurbuz.spring5webfluxrest.repositories.VendorRepository;
 import org.junit.Before;
@@ -21,7 +20,7 @@ public class VendorControllerTest {
   VendorController vendorController;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     vendorRepository = Mockito.mock(VendorRepository.class);
     vendorController = new VendorController(vendorRepository);
     webTestClient = WebTestClient.bindToController(vendorController).build();
@@ -79,23 +78,4 @@ public class VendorControllerTest {
         .expectStatus()
         .isOk();
   }
-
-  /*
-    @Test
-  public void TestUpdate() {
-    BDDMockito.given(categoryRepository.save(any(Category.class)))
-        .willReturn(Mono.just(Category.builder().build()));
-
-    Mono<Category> catToUpdateMono = Mono.just(Category.builder().description("Some Cat").build());
-
-    webTestClient
-        .put()
-        .uri("/api/v1/categories/asdfasdf")
-        .body(catToUpdateMono, Category.class)
-        .exchange()
-        .expectStatus()
-        .isOk();
-  }
-   */
-
 }
